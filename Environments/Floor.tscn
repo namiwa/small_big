@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cif7h3iw6o5vj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j0ejk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4c3w4"]
+
+[node name="Floor" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_j0ejk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_4c3w4")
