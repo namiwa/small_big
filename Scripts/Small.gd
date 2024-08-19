@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+signal hit
+
 @export var TYPE = "small"
-@export var SPEED = 300.0
+@export var SPEED = 200
 @export var JUMP_VELOCITY = -400.0
 var CAN_JUMP = true
 
@@ -13,31 +15,37 @@ func get_type():
 
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
+	
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		$AnimatedSprite2D.animation = "jump"
 		CAN_JUMP = true
 	
-	# Handle Double Jump
-	if TYPE == "small" and Input.is_action_just_pressed("ui_accept") and !is_on_floor() and CAN_JUMP:
+	if CAN_JUMP and not is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		$AnimatedSprite2D.animation = "jump"
 		CAN_JUMP = false
+		
+	var direction = Input.get_axis("Left", "Right")
 
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	if is_on_floor():
+		if direction > 0:
+			$AnimatedSprite2D.animation = "right"
+		elif direction < 0:
+			$AnimatedSprite2D.animation = "left"
+		else:
+			$AnimatedSprite2D.animation = "default"
+	else:
+		$AnimatedSprite2D.animation = "jump"
+	
 	if direction:
 		velocity.x = direction * SPEED
-		$AnimatedSprite2D.animation = "right"
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		$AnimatedSprite2D.animation = "left"
 
+	$AnimatedSprite2D.play()
 	move_and_slide()
+	
+
+

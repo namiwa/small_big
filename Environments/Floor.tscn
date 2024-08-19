@@ -11,3 +11,4 @@ physics_material_override = SubResource("PhysicsMaterial_j0ejk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_4c3w4")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
