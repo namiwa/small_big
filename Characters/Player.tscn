@@ -64,6 +64,7 @@ _data = {
 script = ExtResource("3_aag3y")
 
 [node name="Small" parent="." instance=ExtResource("1_0lj7k")]
+position = Vector2(1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
