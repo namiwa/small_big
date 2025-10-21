@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bb2fhwyxobqrq"]
+[gd_scene load_steps=20 format=3 uid="uid://bb2fhwyxobqrq"]
 
 [ext_resource type="Script" path="res://Scripts/Small.gd" id="1_xnv7d"]
 [ext_resource type="Texture2D" uid="uid://dd5wpt7xdtu4h" path="res://Assets/player_animation_tilesheet.png" id="2_am5dd"]
@@ -6,10 +6,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_xx2hr"]
 atlas = ExtResource("2_am5dd")
 region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1yk8y"]
-atlas = ExtResource("2_am5dd")
-region = Rect2(32, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf3ng"]
 atlas = ExtResource("2_am5dd")
@@ -72,9 +68,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xx2hr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1yk8y")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uf3ng")
@@ -142,13 +135,13 @@ animations = [{
 size = Vector2(14, 15.25)
 
 [node name="Small" type="CharacterBody2D"]
+slide_on_ceiling = false
 script = ExtResource("1_xnv7d")
 JUMP_VELOCITY = -300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_o8dig")
-frame_progress = 0.670765
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -158,5 +151,4 @@ shape = SubResource("RectangleShape2D_dght7")
 zoom = Vector2(8, 8)
 process_callback = 0
 limit_left = 0
-limit_right = 1280
 position_smoothing_enabled = true

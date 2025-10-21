@@ -23,7 +23,6 @@ size = Vector2(29, 22)
 
 [node name="Big" type="CharacterBody2D"]
 script = ExtResource("1_eoo8m")
-TYPE = "big"
 SPEED = 150.0
 JUMP_VELOCITY = -200.0
 
